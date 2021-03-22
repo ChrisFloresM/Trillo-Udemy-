@@ -10,8 +10,15 @@ INDEX:
     2.2.Legal text
 
 3.Hotel View
-  3.1.topside Gallery
-  3.2.Hotel overview
+    3.1.topside Gallery
+    3.2.Hotel overview
+    3.3.Button inline
+    3.4.paragraph
+    3.5.List
+    3.6.Recommend
+    3.7.Reviews
+    3.8.Call to action
+    3.9.End button
 */
 
 /* 
@@ -32,6 +39,11 @@ INDEX:
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: $bp-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
 
   &__input {
     font-family: inherit;
@@ -200,6 +212,11 @@ INDEX:
       justify-content: center;
       padding: 2rem;
     }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
   }
 
   &__icon {
@@ -207,6 +224,13 @@ INDEX:
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0;
+      margin-bottom: 7px;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -238,6 +262,10 @@ INDEX:
   align-items: center;
   border-bottom: var(--line);
   padding: 1rem rem;
+
+  @media only screen and (max-width: $bp-small) {
+    font-size: 1.8rem;
+  }
 
   &__heading {
     font-size: 2.25rem;
@@ -281,17 +309,29 @@ INDEX:
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
     font-size: 0.8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 0.5rem;
+    }
   }
 }
 
@@ -372,18 +412,22 @@ INDEX:
     margin: 0.7rem;
 
     //older browsers
-    /* background-image: url(../img/chevron-thin-right.svg);
-    background-size: cover; */
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     //newer browsers
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      background-image: none;
+    }
   }
 }
-/* ============================== 3.6. Recommend  ======================================== */
+/* ============================== 3.6.Recommend  ======================================== */
 .recommend {
   font-size: 1.3rem;
   color: var(--color-grey-dark-3);
